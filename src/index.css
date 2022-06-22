@@ -62,7 +62,12 @@ a {
 img {
   width: 100%;
   display: block;
+  filter: grayscale(1);
 }
+img:hover {
+   filter: grayscale(50%);
+   transition: 0.3s ease-in;
+} 
 
 ul {
   list-style-type: none;
@@ -86,7 +91,6 @@ Navbar
   display: flex;
   align-items: center;
   border-bottom: 2px solid var(--primaryColor);
-  /* box-shadow: var(--lightShadow); */
 }
 
 .nav-center {
@@ -115,6 +119,23 @@ Navbar
 }
 .nav-links a:hover {
   color: var(--primaryShadowBlue);
+}
+
+.amount-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-amount {
+    position: absolute;
+    top: -22px;
+    left: 14px;
+    bottom: -2px;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    color:var(--yellow)
 }
 
 /* 
@@ -149,6 +170,43 @@ Cocktails List
   }
 }
 
+.search {
+  margin-top: 1rem;
+  padding-bottom: 0;
+}
+
+.search-form {
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--maxWidth);
+  background: var(--mainWhite);
+  padding: 2rem 2.5rem;
+  text-transform: capitalize;
+  border-radius: 6px;
+  /* box-shadow: var(--lightShadow); */
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 1.25rem;
+  /* font-weight: bold; */
+  letter-spacing: 0.25rem;
+  font-family: var(--fontMontserrat);
+  color: var(--primaryColor);
+}
+.form-control input {
+  outline: none;
+  width: 100%;
+  border: none;
+  border-color: transparent;
+  background: var(--mainBackground);
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+/* input[type="text"]:focus {
+  cursor: text;
+} */
 /* 
 ====== 
 Cocktail 
@@ -185,6 +243,8 @@ Cocktail
 .cocktail-info{
   display: flex;
   flex-direction: row;
+  padding-top: 16px;
+  padding-bottom: 16px;
   justify-content: space-evenly; 
   align-items: center; 
   text-align: center;
@@ -202,3 +262,18 @@ color: var(--yellow)
   border-left: 1px solid var(--mainBackground);
   height: 40px;
 }
+
+/* 
+====== 
+Button
+======
+*/
+.btn-primary{
+  font-size: 20px;
+}
+.btn-primary:hover{
+  color:var(--yellow);
+}
+
+
+

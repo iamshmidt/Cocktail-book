@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <main>
         <Navbar></Navbar>
+        <SearchForm></SearchForm>
         <CocktailList></CocktailList>
     </main>
   )

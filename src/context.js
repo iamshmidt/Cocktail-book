@@ -6,17 +6,17 @@ const AppContext = React.createContext();
 
 // https://codepen.io/trevoreyre/pen/bRrrEx
 const AppProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("a");
   const [cocktails, setCocktails] = useState([]);
+  const [save, setSave] = useState(true);
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState();
-
 
   const fetchDrinks = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${url}`);
+      const response = await fetch(`${url}${searchTerm}`);
       const data = await response.json();
       const { drinks } = data;
 
@@ -45,25 +45,43 @@ const AppProvider = ({ children }) => {
 
   const handleAddToCart = (item) => {
     if (cart.indexOf(item) !== -1) return;
-    setCart([...cart, item]);
-    // setAmount(amount + 1);
+      setCart([...cart, item]);
+      // setSave(false);
+      // setSave(true);
   };
 
-    const removeDuplicates = cart.filter(
-      (ele, ind) =>
-        ind ===
-        cart.findIndex((elem) => elem.jobid === ele.jobid && elem.id === ele.id)
-    );
+  const removeFromCart = (id)=>{
+      let newCart = cart.filter((item) => item.id != id);
+      setCart(newCart);
+  }
 
-  // console.log(amount);
+  const uniqueIds = [];
+  const removeDuplicates = cart.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.id);
+    if (!isDuplicate) {
+      uniqueIds.push(element.id);
+
+      return true;
+    }
+    return false;
+  });
 
   useEffect(() => {
     fetchDrinks();
-      // setAmount(removeDuplicates.length);
-  }, []);
+  }, [searchTerm]);
+
   return (
     <AppContext.Provider
-      value={{ loading, cocktails, setSearchTerm, handleAddToCart }}
+      value={{
+        loading,
+        cocktails,
+        setSearchTerm,
+        handleAddToCart,
+        cart,
+        removeDuplicates,
+        save,
+        removeFromCart,
+      }}
     >
       {children}
     </AppContext.Provider>

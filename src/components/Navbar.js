@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { BsSave } from "react-icons/bs";
-const Navbar = ({size}) => {
+import { useGlobalContext } from "../context";
+const Navbar = () => {
+  const { removeDuplicates } = useGlobalContext();
+  // console.log(cart)
   return (
     <nav className="navbar">
       <div className="nav-center">
@@ -15,7 +18,10 @@ const Navbar = ({size}) => {
           </li>
           <li>
             <Link to="/saved">
-              <BsSave />
+              <div className="amount-container">
+                <BsSave />
+                <p className="total-amount">{removeDuplicates.length}</p>
+              </div>
             </Link>
           </li>
         </ul>
