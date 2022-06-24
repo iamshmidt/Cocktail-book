@@ -291,7 +291,11 @@ Cocktail
 
 .cocktail-footer {
   padding: 1.5rem;
-  background: var(--backgroundMain);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgb(72, 54, 90) 100%
+  );
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
