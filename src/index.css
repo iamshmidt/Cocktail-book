@@ -5,16 +5,21 @@ Variables
 */
 
 :root {
-  --mainBackground: #f1f5f8;
+  --light: #f1f5f8;
   --primaryLightColor: #a5e6ba;
   --primaryShadowBlue: #7785ac;
-  --primarySecondaryColor: #360568;
+  --primarySecondaryColor: rgb(45, 25, 65);
   --yellow: #ede342;
   --font-color: #f1f5f8;
   --fontGothic: "Didact Gothic", sans-serif;
   --fontMontserrat: "Montserrat", sans-serif;
   --fontRedHat: "Red Hat Display", sans-serif;
   --fontHeader: "Libre Baskerville", serif;
+  --backgroundMain: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgb(45, 25, 65) 100%
+  );
   /* --fontHeader: 'Playfair Display', serif; */
   --smallWidth: 85vw;
   --maxWidth: 40rem;
@@ -35,19 +40,18 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, var(--fontRedHat);
   color: var(--font-color);
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgb(45, 25, 65) 100%
-  );
+  background: var(--backgroundMain);
   line-height: 1.4;
   font-size: 1rem;
+}
+main{
+  width:100%;
+  margin: 0 auto;
 }
 
 h1,
 h2,
 h3,
-h4,
 h6 {
   font-family: var(--fontHeader);
   letter-spacing: 1.4px;
@@ -65,22 +69,76 @@ img {
   filter: grayscale(1);
 }
 img:hover {
-   filter: grayscale(50%);
-   transition: 0.3s ease-in;
-} 
+  filter: grayscale(50%);
+  transition: 0.3s ease-in;
+}
 
 ul {
   list-style-type: none;
 }
 button {
   background: none;
-	color: var(--mainBackground);
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  color: var(--light);
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
+
+/* 
+====== 
+Loader
+======
+*/
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
 /* 
 ====== 
 Navbar
@@ -118,7 +176,7 @@ Navbar
   transition: var(--mainTransition);
 }
 .nav-links a:hover {
-  color: var(--primaryShadowBlue);
+  color: var(--yellow);
 }
 
 .amount-container {
@@ -129,13 +187,13 @@ Navbar
 }
 
 .total-amount {
-    position: absolute;
-    top: -22px;
-    left: 14px;
-    bottom: -2px;
-    margin-bottom: 0;
-    font-size: 1.25rem;
-    color:var(--yellow)
+  position: absolute;
+  top: -22px;
+  left: 14px;
+  bottom: -2px;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  color: var(--yellow);
 }
 
 /* 
@@ -199,7 +257,7 @@ Cocktails List
   width: 100%;
   border: none;
   border-color: transparent;
-  background: var(--mainBackground);
+  background: var(--light);
   border-radius: 6px;
   padding: 0.5rem;
   font-size: 1.2rem;
@@ -216,14 +274,15 @@ Cocktail
 .cocktail {
   border-radius: 16px;
   margin-bottom: 2rem;
- display: grid;
+  display: grid;
   grid-template-rows: auto 1fr;
   /* width: 500px; */
   /* max-width: 100%; */
   /* min-height: 500px; */
 }
 
-.cocktail img {
+.cocktail img,
+.drink img {
   height: 20rem;
   object-fit: cover;
   border-top-left-radius: 10px;
@@ -232,35 +291,90 @@ Cocktail
 
 .cocktail-footer {
   padding: 1.5rem;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgb(45, 25, 65) 100%
-  );
+  background: var(--backgroundMain);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.cocktail-info{
+.cocktail-info {
   display: flex;
   flex-direction: row;
   padding-top: 16px;
   padding-bottom: 16px;
-  justify-content: space-evenly; 
-  align-items: center; 
+  justify-content: space-evenly;
+  align-items: center;
   text-align: center;
 }
-.cocktail-info p{
-color: var(--yellow)
+.cocktail-info p {
+  color: var(--yellow);
 }
 
-.cocktail-info h5{
+.cocktail-info h5,
+.drink-info h5 {
   text-transform: uppercase;
   font-family: var(--fontMontserrat);
-   font-weight: 200;
+  font-weight: 200;
 }
 .vl {
-  border-left: 1px solid var(--mainBackground);
+  border-left: 1px solid var(--light);
   height: 40px;
+}
+
+.cocktail-section {
+  text-align: center;
+}
+
+/*  --smallWidth: 85vw;
+  --maxWidth: 40rem;
+  --fullWidth: 1170px; */
+.drink {
+  width: var(--smallWidth);
+  max-width: var(--fullWidth);
+  /* display: grid; */
+  /* grid-row: 1 /  span 2; */
+  margin: 0 auto;
+  text-align: left;
+  background-color: var(--backgroundMain);
+}
+.drink img {
+  border-radius: 10px;
+}
+.drink-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  font-size: 20px;
+}
+.drink span {
+  margin-right: 0.5rem;
+}
+.drink-data {
+  background: var(--yellow);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  color: var(--primarySecondaryColor);
+}
+
+@media screen and (min-width: 960px) {
+  .drink {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+/* 
+====== 
+Error
+======
+*/
+.error-page {
+  display: flex;
+  justify-content: center;
+}
+.error-container {
+  text-align: center;
+  text-transform: capitalize;
 }
 
 /* 
@@ -268,12 +382,106 @@ color: var(--yellow)
 Button
 ======
 */
-.btn-primary{
+.btn-primary {
   font-size: 20px;
 }
-.btn-primary:hover{
-  color:var(--yellow);
+.btn-primary:hover {
+  color: var(--yellow);
 }
 
+.back-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+  font-size: 50px;
+}
 
+/* 
+====== 
+scroll to the top button
+======
+*/
+.round {
+  position: fixed;
+  border: 2px solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  bottom: 50px;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+}
 
+#cta {
+  width: 100%;
+  cursor: pointer;
+  position: absolute;
+}
+
+#cta .arrow {
+  left: 30%;
+}
+.arrow {
+  position: absolute;
+  bottom: 0;
+  margin-left: 0px;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  top: 10px;
+  cursor: pointer;
+}
+.segunda {
+  margin-top: 8px;
+}
+
+@keyframes bounceAlpha {
+  0% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+  26% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.bounceAlpha {
+  animation-name: bounceAlpha;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.arrow.primera.bounceAlpha {
+  animation-name: bounceAlpha;
+  animation-duration: 1.4s;
+  animation-delay: 0.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.round .arrow {
+  animation-name: bounceAlpha;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.round .arrow.primera {
+  animation-name: bounceAlpha;
+  animation-duration: 1.4s;
+  animation-delay: 0.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}

@@ -6,7 +6,7 @@ const SearchForm = () => {
   const searchValue = React.useRef("");
 
   React.useEffect(() => {
-    searchValue.current.focus();
+    setSearchTerm(searchValue.current.value);
   }, []);
 
   const searchCocktail = () => {
@@ -20,7 +20,7 @@ const SearchForm = () => {
            <label htmlFor="name">search your favorite cocktail</label>
            <input
              type="text"
-             id="name"
+            //  id="name"
              ref={searchValue}
              onChange={searchCocktail}
            />
