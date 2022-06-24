@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
@@ -9,9 +9,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("a");
   const [cocktails, setCocktails] = useState([]);
-  const [save, setSave] = useState(true);
   const [cart, setCart] = useState([]);
-  const [amount, setAmount] = useState();
 
   const fetchDrinks = async () => {
     setLoading(true);
@@ -51,7 +49,7 @@ const AppProvider = ({ children }) => {
   };
 
   const removeFromCart = (id)=>{
-      let newCart = cart.filter((item) => item.id != id);
+      let newCart = cart.filter((item) => item.id !== id);
       setCart(newCart);
   }
 
@@ -79,7 +77,6 @@ const AppProvider = ({ children }) => {
         handleAddToCart,
         cart,
         removeDuplicates,
-        save,
         removeFromCart,
       }}
     >

@@ -2,12 +2,11 @@ import React from "react";
 import Cocktail from "./Cocktail";
 import Loading from "./Loading";
 import BackToTopButton from "./BackToTopButton"
-import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 
 
 const CocktailList = () => {
-  const { cocktails, loading, removeDuplicates } = useGlobalContext();
+  const { cocktails, loading} = useGlobalContext();
   if (loading) {
     return <Loading></Loading>;
   }

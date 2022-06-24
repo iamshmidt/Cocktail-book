@@ -1,7 +1,7 @@
 import React from "react";
 import Loading from "../components/Loading";
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 
 const Detail=()=>{
   const { id } = useParams();

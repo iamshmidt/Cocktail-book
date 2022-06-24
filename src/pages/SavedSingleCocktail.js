@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useGlobalContext } from '../context'
 import { gsap } from "gsap";
 import { AiOutlineClose } from "react-icons/ai";
 // AiOutlineClose;
 
 const SingleCocktail = (item) => {
-  const { handleAddToCart, removeFromCart } = useGlobalContext();
-  const [show, setShow] = useState(true);
+  const { removeFromCart } = useGlobalContext();
   const { image, name, id, info, glass } = item;
   // console.log(save)
   const onEnter = ({ currentTarget }) => {

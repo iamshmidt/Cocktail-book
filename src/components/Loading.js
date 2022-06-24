@@ -1,5 +1,4 @@
-// import React from 'react'
-import Loader from "../img/loader.gif";
+
 
 const Loading = () => {
   return (

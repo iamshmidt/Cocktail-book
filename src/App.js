@@ -1,4 +1,4 @@
-import { useGlobalContext } from "./context";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import pages
 import Home from "./pages/Home";
